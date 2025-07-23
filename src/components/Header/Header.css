@@ -7,6 +7,12 @@
   left: 280px;
   right: 0;
   z-index: 90;
+  transition: left 0.3s ease;
+}
+
+/* Adjust header position when sidebar is collapsed */
+.header.header-sidebar-collapsed {
+  left: 80px;
 }
 
 .header-content {

@@ -5,6 +5,12 @@
   padding: 32px;
   background: #f9fafb;
   min-height: calc(100vh - 80px);
+  transition: margin-left 0.3s ease;
+}
+
+/* Adjust dashboard margin when sidebar is collapsed */
+.dashboard.dashboard-sidebar-collapsed {
+  margin-left: 80px;
 }
 
 .dashboard-header {
