@@ -49,7 +49,8 @@ export interface ProvinceData {
 export interface NavigationItem {
   id: string;
   label: string;
-  icon?: string;
+  icon?: string; // Can be emoji string or image path
+  iconType?: 'emoji' | 'image'; // Explicitly specify icon type
   isActive?: boolean;
   children?: NavigationItem[];
 }

@@ -3,7 +3,11 @@ import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Dashboard from './components/Dashboard/Dashboard';
 import { User, NavigationItem, KPICard, SalesTarget, ChartDataPoint, Product, ProvinceData } from './types';
+import storeIcon from './assets/store.png';
 import './App.css';
+
+// Fallback SVG home icon as data URL
+const homeIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23374151' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Cpolyline points='9,22 9,12 15,12 15,22'/%3E%3C/svg%3E";
 
 const App: React.FC = () => {
   // State to track sidebar collapse status
@@ -23,11 +27,12 @@ const App: React.FC = () => {
   };
 
   const navigationItems: NavigationItem[] = [
-    { id: 'dashboard', label: 'Dashboard', icon: '📊', isActive: true },
-    { 
-      id: 'product', 
-      label: 'Product (19)', 
-      icon: '📦',
+    { id: 'dashboard', label: 'Dashboard', icon: homeIcon, iconType: 'image', isActive: true },
+    {
+      id: 'product',
+      label: 'Product (19)',
+      icon: storeIcon,
+      iconType: 'image',
       children: [
         { id: 'sneakers', label: 'Sneakers' },
         { id: 'jacket', label: 'Jacket' },
@@ -142,13 +147,13 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      <Sidebar 
+      <Sidebar
         user={user}
         navigationItems={navigationItems}
         onNavigationClick={handleNavigationClick}
         onToggle={handleSidebarToggle}
       />
-      <Header 
+      <Header
         user={user}
         onSearch={handleSearch}
         className={isSidebarCollapsed ? 'header-sidebar-collapsed' : ''}

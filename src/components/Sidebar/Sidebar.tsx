@@ -41,6 +41,32 @@ const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationCl
         }
     };
 
+    // Helper function to render icon (emoji or image)
+    const renderIcon = (icon: string, iconType?: 'emoji' | 'image') => {
+        console.log('Rendering icon:', icon, 'Type:', iconType); // Debug log
+        
+        // Check if it's explicitly marked as an image or if it looks like an image path
+        if (iconType === 'image' || icon.includes('.png') || icon.includes('.jpg') || icon.includes('.svg') || icon.includes('.jpeg') || icon.startsWith('/') || icon.includes('static/')) {
+            return (
+                <img 
+                    src={icon} 
+                    alt="Navigation icon" 
+                    className="nav-icon-image"
+                    draggable={false}
+                    onError={(e) => {
+                        console.error('Failed to load icon:', icon);
+                        // Fallback to a simple house emoji if image fails
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.parentElement!.innerHTML = '<span class="nav-icon-text">🏠</span>';
+                    }}
+                    onLoad={() => console.log('Icon loaded successfully:', icon)}
+                />
+            );
+        }
+        // Otherwise, treat as emoji or text
+        return <span className="nav-icon-text">{icon}</span>;
+    };
+
     const renderNavigationItem = (item: NavigationItem) => (
         <div key={item.id} className="nav-item-container">
             <div
@@ -48,7 +74,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationCl
                 onClick={() => onNavigationClick(item.id)}
                 title={isCollapsed ? item.label : undefined}
             >
-                {item.icon && <span className="nav-icon">{item.icon}</span>}
+                {item.icon && <span className="nav-icon">{renderIcon(item.icon, item.iconType)}</span>}
                 {!isCollapsed && <span className="nav-label">{item.label}</span>}
             </div>
             {item.children && (
