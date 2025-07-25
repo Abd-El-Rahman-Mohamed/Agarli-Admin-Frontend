@@ -14,6 +14,7 @@ interface DashboardProps {
   chartData: ChartDataPoint[];
   popularProducts: Product[];
   provinceData: ProvinceData[];
+  className?: string;
 }
 
 const Dashboard: React.FC<DashboardProps> = ({
@@ -21,10 +22,11 @@ const Dashboard: React.FC<DashboardProps> = ({
   salesTarget,
   chartData,
   popularProducts,
-  provinceData
+  provinceData,
+  className = ''
 }) => {
   return (
-    <div className="dashboard">
+    <div className={`dashboard ${className}`}>
       <div className="dashboard-header">
         <h1 className="dashboard-title">Dashboard</h1>
         <p className="dashboard-subtitle">Dashboard</p>

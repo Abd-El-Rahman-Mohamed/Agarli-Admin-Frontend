@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -6,6 +6,14 @@ import { User, NavigationItem, KPICard, SalesTarget, ChartDataPoint, Product, Pr
 import './App.css';
 
 const App: React.FC = () => {
+  // State to track sidebar collapse status
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
+
+  // Handle sidebar toggle with useCallback to prevent unnecessary re-renders
+  const handleSidebarToggle = useCallback((isCollapsed: boolean): void => {
+    setIsSidebarCollapsed(isCollapsed);
+  }, []);
+
   // Sample data
   const user: User = {
     id: '1',
@@ -85,7 +93,7 @@ const App: React.FC = () => {
 
   const popularProducts: Product[] = [
     {
-      id: '02231',
+      id: '02231-1',
       name: 'Kanky Kftadakate (Green)',
       image: '/api/placeholder/40/40',
       price: 20.00,
@@ -93,7 +101,7 @@ const App: React.FC = () => {
       status: 'Success'
     },
     {
-      id: '02231',
+      id: '02231-2',
       name: 'Kanky Kftadakate (Green)',
       image: '/api/placeholder/40/40',
       price: 20.00,
@@ -101,7 +109,7 @@ const App: React.FC = () => {
       status: 'Success'
     },
     {
-      id: '02231',
+      id: '02231-3',
       name: 'Kanky Kftadakate (Green)',
       image: '/api/placeholder/40/40',
       price: 20.00,
@@ -109,7 +117,7 @@ const App: React.FC = () => {
       status: 'Success'
     },
     {
-      id: '02231',
+      id: '02231-4',
       name: 'Kanky Kftadakate (Green)',
       image: '/api/placeholder/40/40',
       price: 20.00,
@@ -124,13 +132,13 @@ const App: React.FC = () => {
     { name: 'Bali', percentage: 65, color: '#1e40af' }
   ];
 
-  const handleSearch = (query: string) => {
+  const handleSearch = useCallback((query: string) => {
     console.log('Search query:', query);
-  };
+  }, []);
 
-  const handleNavigationClick = (itemId: string) => {
+  const handleNavigationClick = useCallback((itemId: string) => {
     console.log('Navigation clicked:', itemId);
-  };
+  }, []);
 
   return (
     <div className="app">
@@ -138,10 +146,12 @@ const App: React.FC = () => {
         user={user}
         navigationItems={navigationItems}
         onNavigationClick={handleNavigationClick}
+        onToggle={handleSidebarToggle}
       />
       <Header 
         user={user}
         onSearch={handleSearch}
+        className={isSidebarCollapsed ? 'header-sidebar-collapsed' : ''}
       />
       <Dashboard
         kpiCards={kpiCards}
@@ -149,6 +159,7 @@ const App: React.FC = () => {
         chartData={chartData}
         popularProducts={popularProducts}
         provinceData={provinceData}
+        className={isSidebarCollapsed ? 'dashboard-sidebar-collapsed' : ''}
       />
     </div>
   );

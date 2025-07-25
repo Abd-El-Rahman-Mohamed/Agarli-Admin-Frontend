@@ -2,7 +2,6 @@
   width: 280px;
   height: 100vh;
   background: #ffffff;
-  border-right: 1px solid #e5e7eb;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -24,61 +23,89 @@
 
 .sidebar-header {
   padding: 20px;
-  border-bottom: 1px solid #e5e7eb;
   position: relative;
 }
 
-/* Toggle button styles */
+/* Toggle button styles - unified for both states */
 .sidebar-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-  transition: background 0.2s ease;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  z-index: 10;
 }
 
 .sidebar-toggle:hover {
   background: #f3f4f6;
+  transform: scale(1.05);
 }
 
 .sidebar-toggle:focus {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
+  background: #f3f4f6;
 }
 
-.toggle-icon {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
+.sidebar-toggle:active {
+  transform: scale(0.95);
+  background: #e5e7eb;
 }
 
-/* Expand button styles (when collapsed) */
-.sidebar-expand {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 4px;
-  transition: background 0.2s ease;
-  margin-top: 12px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+/* Toggle button when expanded - positioned at top right */
+.sidebar-toggle-expanded {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+/* Toggle button when collapsed - positioned at bottom center */
+.sidebar-toggle-collapsed {
+  position: static;
+  margin: 20px auto 0;
+  width: 40px;
   transform: scaleX(-1);
   /* Horizontal flip when collapsed */
 }
 
-.sidebar-expand:hover {
-  background: #f3f4f6;
+/* Keep horizontal flip on hover when collapsed */
+.sidebar-toggle-collapsed:hover {
+  transform: scaleX(-1) scale(1.05);
+  /* Maintain horizontal flip + slight scale on hover */
 }
 
-.sidebar-expand:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
+/* Toggle icon styles */
+.toggle-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  pointer-events: none;
+  /* Prevent icon from interfering with button clicks */
+}
+
+/* Icon rotation for visual feedback */
+.toggle-icon-expanded {
+  transform: rotate(0deg);
+}
+
+.toggle-icon-collapsed {
+  transform: rotate(180deg) scaleX(-1);
+}
+
+/* Fallback icon styles */
+.toggle-icon-fallback {
+  font-size: 16px;
+  font-weight: bold;
+  color: #6b7280;
+  pointer-events: none;
+  user-select: none;
 }
 
 .logo {
@@ -115,20 +142,44 @@
 .store-info {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: #f3f4f6;
-  border-radius: 8px;
+  gap: 12px;
+  padding: 16px 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  margin-top: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.store-icon {
-  font-size: 16px;
+.store-logo {
+  flex-shrink: 0;
+}
+
+.store-logo-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.store-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.store-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
 }
 
 .store-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: #374151;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.2;
 }
 
 .sidebar-content {
@@ -143,7 +194,7 @@
 
 .nav-section-title {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 300;
   color: #9ca3af;
   text-transform: uppercase;
   letter-spacing: 0.05em;

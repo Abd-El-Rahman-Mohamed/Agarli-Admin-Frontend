@@ -5,15 +5,16 @@ import './Header.css';
 interface HeaderProps {
   user: User;
   onSearch: (query: string) => void;
+  className?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ user, onSearch }) => {
+const Header: React.FC<HeaderProps> = ({ user, onSearch, className = '' }) => {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onSearch(e.target.value);
   };
 
   return (
-    <header className="header">
+    <header className={`header ${className}`}>
       <div className="header-content">
         <div className="search-section">
           <div className="search-container">

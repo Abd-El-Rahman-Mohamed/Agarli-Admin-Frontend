@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavigationItem, User } from '../../types';
 import agarliLogo from '../../assets/agarli-logo.png';
+import okkankyLogo from '../../assets/okkanky-logo.png';
 import toggleIcon from '../../assets/toggle-icon.png';
 import './Sidebar.css';
 
@@ -11,13 +12,33 @@ interface SidebarProps {
     onToggle?: (isCollapsed: boolean) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationClick }) => {
+const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationClick, onToggle }) => {
     // State to track whether the sidebar is collapsed or expanded
     const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
 
-    // Toggle function to handle sidebar collapse/expand
-    const handleToggle = (): void => {
+    // Internal toggle function for state management
+    const toggleSidebar = (): void => {
+        console.log('Toggle triggered, current state:', isCollapsed); // Debug log
         setIsCollapsed(prevState => !prevState);
+    };
+
+    // Toggle function to handle mouse clicks
+    const handleToggle = (event: React.MouseEvent<HTMLButtonElement>): void => {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleSidebar();
+    };
+
+    // Effect to notify parent component when state changes
+    useEffect(() => {
+        onToggle?.(isCollapsed);
+    }, [isCollapsed, onToggle]);
+
+    // Handle keyboard navigation for accessibility
+    const handleKeyDown = (event: React.KeyboardEvent): void => {
+        if (event.key === 'Escape' && !isCollapsed) {
+            toggleSidebar();
+        }
     };
 
     const renderNavigationItem = (item: NavigationItem) => (
@@ -48,29 +69,56 @@ const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationCl
     );
 
     return (
-        <div className={`sidebar ${isCollapsed ? 'sidebar-collapsed' : 'sidebar-expanded'}`}>
+        <div
+            className={`sidebar ${isCollapsed ? 'sidebar-collapsed' : 'sidebar-expanded'}`}
+            onKeyDown={handleKeyDown}
+            role="navigation"
+            aria-label="Main navigation"
+        >
             <div className="sidebar-header">
                 <div className="logo">
                     <img src={agarliLogo} alt="Agarli Logo" className="logo-image" />
                 </div>
                 {!isCollapsed && (
                     <div className="store-info">
-                        <span className="store-icon">🏪</span>
-                        <span className="store-name">Kanky Store</span>
+                        <div className="store-logo">
+                            <img src={okkankyLogo} alt="Kanky Logo" className="store-logo-image" />
+                        </div>
+                        <div className="store-details">
+                            <div className="store-label">Company</div>
+                            <div className="store-name">Kanky Store</div>
+                        </div>
                     </div>
                 )}
-                {/* Toggle button - only visible when sidebar is expanded */}
-                {!isCollapsed && (
-                    <button
-                        className="sidebar-toggle"
-                        onClick={handleToggle}
-                        aria-label="Collapse sidebar"
-                        title="Collapse sidebar"
-                        type="button"
-                    >
-                        <img src={toggleIcon} alt="Toggle sidebar" className="toggle-icon" />
-                    </button>
-                )}
+                {/* Toggle button - always visible but positioned differently */}
+                <button
+                    className={`sidebar-toggle ${isCollapsed ? 'sidebar-toggle-collapsed' : 'sidebar-toggle-expanded'}`}
+                    onClick={handleToggle}
+                    onMouseDown={(e) => e.preventDefault()} // Prevent focus issues
+                    aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+                    title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+                    type="button"
+                    aria-expanded={!isCollapsed}
+                    tabIndex={0}
+                >
+                    {toggleIcon ? (
+                        <img
+                            src={toggleIcon}
+                            alt=""
+                            className={`toggle-icon ${isCollapsed ? 'toggle-icon-collapsed' : 'toggle-icon-expanded'}`}
+                            draggable={false}
+                            onError={(e) => {
+                                // Fallback to text if image fails to load
+                                e.currentTarget.style.display = 'none';
+                                e.currentTarget.parentElement!.innerHTML = isCollapsed ? '→' : '←';
+                            }}
+                        />
+                    ) : (
+                        <span className="toggle-icon-fallback">
+                            {isCollapsed ? '→' : '←'}
+                        </span>
+                    )}
+                </button>
             </div>
 
             <div className="sidebar-content">
@@ -119,18 +167,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationCl
                     )}
                     {!isCollapsed && <div className="user-menu">⋮</div>}
                 </div>
-                {/* Expand button - only visible when sidebar is collapsed */}
-                {isCollapsed && (
-                    <button
-                        className="sidebar-expand"
-                        onClick={handleToggle}
-                        aria-label="Expand sidebar"
-                        title="Expand sidebar"
-                        type="button"
-                    >
-                        <img src={toggleIcon} alt="Expand sidebar" className="toggle-icon" />
-                    </button>
-                )}
+
             </div>
         </div>
     );
