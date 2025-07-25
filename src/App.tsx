@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Dashboard from './components/Dashboard/Dashboard';
 import { User, NavigationItem, KPICard, SalesTarget, ChartDataPoint, Product, ProvinceData } from './types';
 import storeIcon from './assets/store.png';
+import arrowIcon from './assets/arrow-up-simple.png';
 import './App.css';
 
 // Fallback SVG home icon as data URL
@@ -33,6 +34,8 @@ const App: React.FC = () => {
       label: 'Product (19)',
       icon: storeIcon,
       iconType: 'image',
+      isExpanded: true, // Initially expanded
+      hasExpandIcon: true, // Show the expand/collapse arrow
       children: [
         { id: 'sneakers', label: 'Sneakers' },
         { id: 'jacket', label: 'Jacket' },

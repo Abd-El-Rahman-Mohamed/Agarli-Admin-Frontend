@@ -636,4 +636,77 @@
 
 /* .nav-item-container:nth-child(2) .nav-item.nav-item-active .nav-label {
   color: #4338ca !important;
-} */
+} *//* ====
+= EXPAND/COLLAPSE ARROW STYLING ===== */
+/* Styling for navigation items with expandable children */
+
+.nav-expand-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.nav-expand-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  opacity: 1;
+}
+
+.nav-expand-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+/* Arrow rotation states */
+.nav-expand-btn.expanded .nav-expand-icon {
+  transform: rotate(0deg); /* Arrow pointing up when expanded */
+}
+
+.nav-expand-btn.collapsed .nav-expand-icon {
+  transform: rotate(180deg); /* Arrow pointing down when collapsed */
+}
+
+/* Special styling for the Product nav item expand button */
+.nav-item-container:nth-child(2) .nav-expand-btn {
+  opacity: 0.8;
+}
+
+.nav-item-container:nth-child(2) .nav-expand-btn:hover {
+  background: rgba(67, 56, 202, 0.1);
+  opacity: 1;
+}
+
+.nav-item-container:nth-child(2) .nav-expand-icon {
+  filter: brightness(0) saturate(100%) invert(26%) sepia(89%) saturate(1583%) hue-rotate(231deg) brightness(102%) contrast(101%);
+  /* This filter converts the icon to the indigo color #4338ca to match the Product item styling */
+}
+
+/* Ensure proper spacing in nav items with expand buttons */
+.nav-item {
+  position: relative;
+}
+
+.nav-item .nav-label {
+  margin-right: 8px; /* Add space for the expand button */
+}
+
+/* Animation for children appearing/disappearing */
+.nav-children {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* Responsive behavior for collapsed sidebar */
+.sidebar-collapsed .nav-expand-btn {
+  display: none; /* Hide expand buttons when sidebar is collapsed */
+}

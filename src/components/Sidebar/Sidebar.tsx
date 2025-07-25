@@ -3,6 +3,7 @@ import { NavigationItem, User } from '../../types';
 import agarliLogo from '../../assets/agarli-logo.png';
 import okkankyLogo from '../../assets/okkanky-logo.png';
 import toggleIcon from '../../assets/toggle-icon.png';
+import arrowIcon from '../../assets/arrow-up-simple.png';
 import './Sidebar.css';
 
 interface SidebarProps {
@@ -15,6 +16,17 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationClick, onToggle }) => {
     // State to track whether the sidebar is collapsed or expanded
     const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
+    
+    // State to track which navigation items are expanded
+    const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(() => {
+        const initial: Record<string, boolean> = {};
+        navigationItems.forEach(item => {
+            if (item.isExpanded !== undefined) {
+                initial[item.id] = item.isExpanded;
+            }
+        });
+        return initial;
+    });
 
     // Internal toggle function for state management
     const toggleSidebar = (): void => {
@@ -39,6 +51,15 @@ const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationCl
         if (event.key === 'Escape' && !isCollapsed) {
             toggleSidebar();
         }
+    };
+
+    // Toggle expansion state for navigation items with children
+    const toggleItemExpansion = (itemId: string, event: React.MouseEvent): void => {
+        event.stopPropagation(); // Prevent triggering the main navigation click
+        setExpandedItems(prev => ({
+            ...prev,
+            [itemId]: !prev[itemId]
+        }));
     };
 
     // Helper function to render icon (emoji or image)
@@ -67,32 +88,55 @@ const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationCl
         return <span className="nav-icon-text">{icon}</span>;
     };
 
-    const renderNavigationItem = (item: NavigationItem) => (
-        <div key={item.id} className="nav-item-container">
-            <div
-                className={`nav-item ${item.isActive ? 'nav-item-active' : ''}`}
-                onClick={() => onNavigationClick(item.id)}
-                title={isCollapsed ? item.label : undefined}
-            >
-                {item.icon && <span className="nav-icon">{renderIcon(item.icon, item.iconType)}</span>}
-                {!isCollapsed && <span className="nav-label">{item.label}</span>}
-            </div>
-            {item.children && (
-                <div className="nav-children">
-                    {item.children.map(child => (
-                        <div
-                            key={child.id}
-                            className="nav-child-item"
-                            onClick={() => onNavigationClick(child.id)}
-                            title={isCollapsed ? child.label : undefined}
+    const renderNavigationItem = (item: NavigationItem) => {
+        const isExpanded = expandedItems[item.id] ?? item.isExpanded ?? true;
+        
+        return (
+            <div key={item.id} className="nav-item-container">
+                <div
+                    className={`nav-item ${item.isActive ? 'nav-item-active' : ''}`}
+                    onClick={() => onNavigationClick(item.id)}
+                    title={isCollapsed ? item.label : undefined}
+                >
+                    {item.icon && <span className="nav-icon">{renderIcon(item.icon, item.iconType)}</span>}
+                    {!isCollapsed && <span className="nav-label">{item.label}</span>}
+                    
+                    {/* Expand/Collapse Arrow for items with children */}
+                    {item.hasExpandIcon && item.children && !isCollapsed && (
+                        <button
+                            className={`nav-expand-btn ${isExpanded ? 'expanded' : 'collapsed'}`}
+                            onClick={(e) => toggleItemExpansion(item.id, e)}
+                            aria-label={isExpanded ? 'Collapse' : 'Expand'}
+                            type="button"
                         >
-                            {!isCollapsed && <span className="nav-child-label">{child.label}</span>}
-                        </div>
-                    ))}
+                            <img 
+                                src={arrowIcon} 
+                                alt="Expand/Collapse" 
+                                className="nav-expand-icon"
+                                draggable={false}
+                            />
+                        </button>
+                    )}
                 </div>
-            )}
-        </div>
-    );
+                
+                {/* Children items - only show if expanded */}
+                {item.children && isExpanded && (
+                    <div className="nav-children">
+                        {item.children.map(child => (
+                            <div
+                                key={child.id}
+                                className="nav-child-item"
+                                onClick={() => onNavigationClick(child.id)}
+                                title={isCollapsed ? child.label : undefined}
+                            >
+                                {!isCollapsed && <span className="nav-child-label">{child.label}</span>}
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+        );
+    };
 
     return (
         <div

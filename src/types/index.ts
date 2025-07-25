@@ -53,4 +53,6 @@ export interface NavigationItem {
   iconType?: 'emoji' | 'image'; // Explicitly specify icon type
   isActive?: boolean;
   children?: NavigationItem[];
+  isExpanded?: boolean; // Track if children are expanded
+  hasExpandIcon?: boolean; // Whether to show expand/collapse arrow
 }
