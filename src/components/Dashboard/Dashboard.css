@@ -190,90 +190,135 @@
 
 /* Sales Target Card */
 .sales-target-card {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 16px;
+  width: 558px;
+  height: 155px;
+  background: #FFFFFF;
+  border: 1px solid #E7E7E7;
+  border-radius: 24px;
 }
 
 .sales-target-title {
-  font-size: 18px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
   font-weight: 600;
-  color: #1f2937;
-  margin: 0 0 24px 0;
+  font-size: 16px;
+  line-height: 130%;
+  color: #454545;
+  margin: 0;
 }
 
 .sales-target-content {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 24px;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+  width: 100%;
+  align-self: stretch;
 }
 
 .sales-progress-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 4px;
   flex: 1;
 }
 
 .progress-label {
-  font-size: 14px;
-  color: #6b7280;
-  margin-bottom: 8px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  color: #737373;
+  margin: 0;
 }
 
 .progress-value {
-  font-size: 24px;
-  font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 16px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 130%;
+  color: #454545;
+  margin: 0;
 }
 
 .sales-target-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 4px;
+  flex: 1;
   text-align: right;
 }
 
 .target-label {
-  font-size: 14px;
-  color: #6b7280;
-  margin-bottom: 8px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  color: #737373;
+  margin: 0;
 }
 
 .target-value {
-  font-size: 20px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
   font-weight: 600;
-  color: #1f2937;
+  font-size: 16px;
+  line-height: 130%;
+  color: #454545;
+  margin: 0;
 }
 
 .progress-bar-container {
-  margin-top: 16px;
+  width: 100%;
+  height: 20px;
+  background: #E7E7E7;
+  border-radius: 30px;
+  position: relative;
+  align-self: stretch;
 }
 
 .progress-bar {
-  width: 100%;
-  height: 8px;
-  background: #e5e7eb;
-  border-radius: 4px;
   position: relative;
-  overflow: visible;
+  width: 100%;
+  height: 20px;
 }
 
 .progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #60a5fa 0%, #34d399 100%);
-  border-radius: 4px;
+  position: absolute;
+  height: 20px;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(90deg, #94B9FF 0%, #CEFDD9 100%);
+  border-radius: 30px;
   transition: width 0.3s ease;
+  min-width: 20px;
 }
 
 .progress-handle {
+  box-sizing: border-box;
   position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 16px;
-  height: 16px;
-  background: white;
-  border: 2px solid #60a5fa;
+  width: 36px;
+  height: 36px;
+  top: -8px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #FFFFFF;
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateX(-50%);
 }
 
 /* Sales Chart */
