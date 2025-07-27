@@ -38,7 +38,7 @@ const SalesChart: React.FC<SalesChartProps> = ({ data }) => {
 
       <div className="chart-values">
         <div className="chart-value-item">
-          <div className="value-label">Average from forecast</div>
+          <div className="value-label">Average item persale</div>
           <div className="value-amount">{formatCurrency(211411223)}</div>
         </div>
         <div className="chart-value-item highlight">

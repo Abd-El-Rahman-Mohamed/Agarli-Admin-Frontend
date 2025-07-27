@@ -1046,11 +1046,23 @@
 }
 
 .legend-average {
-  background-color: #4ade80;
+  width: 14px;
+  height: 14px;
+  background: #BCF328;
+  border-radius: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .legend-target {
-  background-color: #60a5fa;
+  width: 14px;
+  height: 14px;
+  background: #1A71F6;
+  border-radius: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .chart-values {
@@ -1063,6 +1075,61 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+/* First chart value item with dashed border */
+.chart-values .chart-value-item:first-child {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 4px;
+  width: 116px;
+  height: 55px;
+  background-color: transparent;
+  border-radius: 12px;
+  position: relative;
+}
+
+.chart-values .chart-value-item:first-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px dashed #1A71F6;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.chart-values .chart-value-item:first-child .value-label {
+  width: 100px;
+  height: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 140%;
+  color: #888888;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.chart-values .chart-value-item:first-child .value-amount {
+  width: 87px;
+  height: 21px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 150%;
+  color: #454545;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .chart-value-item.highlight {
