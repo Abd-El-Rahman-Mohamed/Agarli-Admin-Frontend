@@ -271,7 +271,33 @@
 
 .nav-children {
   margin-left: 32px;
-  border-left: 1px solid #e5e7eb;
+  position: relative;
+}
+
+/* Vertical line for the tree structure */
+.nav-children::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #d1d5db;
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* White mask to hide the vertical line below the last child */
+.nav-children::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1px;
+  height: 20px;
+  background: #ffffff;
+  z-index: 1000;
+  pointer-events: none;
 }
 
 /* Hide children when collapsed */
@@ -283,10 +309,62 @@
   padding: 8px 20px;
   cursor: pointer;
   transition: background 0.2s ease;
+  position: relative;
+  padding-left: 24px;
+  /* Add space for the L-shaped connector */
 }
 
+/* L-shaped connector for each child item */
+.nav-child-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 16px;
+  height: 1px;
+  background: #d1d5db;
+  transform: translateY(-50%);
+  z-index: 998;
+  pointer-events: none;
+}
+
+/* Vertical part of the L-shaped connector */
+.nav-child-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 50%;
+  background: #d1d5db;
+  z-index: 998;
+  pointer-events: none;
+}
+
+/* Remove the top vertical line for the last child item */
+.nav-child-item:last-child::after {
+  display: none;
+}
+
+/* Add a bottom vertical line for all items except the last one */
+.nav-child-item:not(:last-child)::after {
+  height: 100%;
+}
+
+/* Hover background - use a simple background property with lower z-index context */
 .nav-child-item:hover {
   background: #f9fafb;
+  position: relative;
+  z-index: 1;
+  /* Lower than the lines */
+}
+
+/* Force lines to stay visible on hover with even higher z-index */
+.nav-child-item:hover::before,
+.nav-child-item:hover::after {
+  z-index: 999 !important;
+  background: #d1d5db !important;
+  opacity: 1 !important;
 }
 
 .nav-child-label {
@@ -636,7 +714,8 @@
 
 /* .nav-item-container:nth-child(2) .nav-item.nav-item-active .nav-label {
   color: #4338ca !important;
-} *//* ====
+} */
+/* ====
 = EXPAND/COLLAPSE ARROW STYLING ===== */
 /* Styling for navigation items with expandable children */
 
@@ -669,11 +748,13 @@
 
 /* Arrow rotation states */
 .nav-expand-btn.expanded .nav-expand-icon {
-  transform: rotate(0deg); /* Arrow pointing up when expanded */
+  transform: rotate(0deg);
+  /* Arrow pointing up when expanded */
 }
 
 .nav-expand-btn.collapsed .nav-expand-icon {
-  transform: rotate(180deg); /* Arrow pointing down when collapsed */
+  transform: rotate(180deg);
+  /* Arrow pointing down when collapsed */
 }
 
 /* Special styling for the Product nav item expand button */
@@ -697,7 +778,8 @@
 }
 
 .nav-item .nav-label {
-  margin-right: 8px; /* Add space for the expand button */
+  margin-right: 8px;
+  /* Add space for the expand button */
 }
 
 /* Animation for children appearing/disappearing */
@@ -708,5 +790,6 @@
 
 /* Responsive behavior for collapsed sidebar */
 .sidebar-collapsed .nav-expand-btn {
-  display: none; /* Hide expand buttons when sidebar is collapsed */
+  display: none;
+  /* Hide expand buttons when sidebar is collapsed */
 }
