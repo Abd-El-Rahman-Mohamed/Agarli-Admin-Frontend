@@ -15,7 +15,7 @@ const homeIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
 
 const App: React.FC = () => {
   // State to track sidebar collapse status
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(true);
 
   // Handle sidebar toggle with useCallback to prevent unnecessary re-renders
   const handleSidebarToggle = useCallback((isCollapsed: boolean): void => {
@@ -37,7 +37,7 @@ const App: React.FC = () => {
       label: 'Product (19)',
       icon: storeIcon,
       iconType: 'image',
-      isExpanded: true, // Initially expanded
+      isExpanded: false, // Initially expanded
       hasExpandIcon: true, // Show the expand/collapse arrow
       children: [
         { id: 'sneakers', label: 'Sneakers' },

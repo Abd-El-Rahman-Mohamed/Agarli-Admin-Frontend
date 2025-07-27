@@ -7,6 +7,7 @@ import arrowIcon from '../../assets/arrow-up-simple.png';
 import settingsIcon from '../../assets/settings.png';
 import helpIcon from '../../assets/help.png';
 import moonIcon from '../../assets/moon.png';
+import adminAvatar from '../../assets/admin-avatar.png';
 import './Sidebar.css';
 
 interface SidebarProps {
@@ -225,20 +226,24 @@ const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationCl
 
             <div className="sidebar-footer">
                 <div className="user-profile">
-                    <div className="user-avatar" title={isCollapsed ? user.name : undefined}>
-                        {user.avatar ? (
-                            <img src={user.avatar} alt={user.name} />
-                        ) : (
-                            <div className="avatar-placeholder">{user.name.charAt(0)}</div>
+                    <div className="user-info-container">
+                        <div className="user-avatar" title={isCollapsed ? user.name : undefined}>
+                            <img src={adminAvatar} alt={user.name} />
+                        </div>
+                        {!isCollapsed && (
+                            <div className="user-info">
+                                <div className="user-name">{user.name}</div>
+                                <div className="user-role">{user.role}</div>
+                            </div>
                         )}
                     </div>
                     {!isCollapsed && (
-                        <div className="user-info">
-                            <div className="user-name">{user.name}</div>
-                            <div className="user-role">{user.role}</div>
+                        <div className="user-dropdown">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9L12 15L18 9" stroke="#454545" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
                         </div>
                     )}
-                    {!isCollapsed && <div className="user-menu">⋮</div>}
                 </div>
 
             </div>
