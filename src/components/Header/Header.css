@@ -24,49 +24,86 @@
 }
 
 .search-section {
-  flex: 1;
   max-width: 400px;
+  display: flex;
+  justify-content: center;
 }
 
 .search-container {
-  position: relative;
+  box-sizing: border-box;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  padding: 8px 16px;
+  gap: 4px;
+  margin: 0 auto;
+  width: 300px;
+  height: 40px;
+  border: 1.6px solid #B0B0B0;
+  border-radius: 12px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .search-input {
-  width: 100%;
-  height: 44px;
-  padding: 0 16px 0 48px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 14px;
+  width: 240px;
+  height: 21px;
+  border: none;
   outline: none;
-  transition: border-color 0.2s ease;
-}
-
-.search-input:focus {
-  border-color: #3b82f6;
+  background: transparent;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #949494;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+  padding: 0;
 }
 
 .search-input::placeholder {
-  color: #9ca3af;
+  color: #949494;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.search-input:focus {
+  outline: none;
+  border: none;
 }
 
 .search-button {
-  position: absolute;
-  left: 16px;
+  width: 24px;
+  height: 24px;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 16px;
-  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  padding: 0;
+}
+
+.search-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(27%) sepia(8%) saturate(1567%) hue-rotate(169deg) brightness(94%) contrast(87%);
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 8px;
 }
 
 .notification-icons {
@@ -75,65 +112,172 @@
   gap: 16px;
 }
 
+.header-separator {
+  width: 34px;
+  height: 0px;
+  border: 1px solid #C9C9C9;
+  transform: rotate(90deg);
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
 .notification-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 6px;
+  gap: 4px;
+  isolation: isolate;
+  width: 36px;
+  height: 36px;
+  background: #F6F6F6;
+  border-radius: 9px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
   position: relative;
   cursor: pointer;
-  padding: 8px;
-  border-radius: 8px;
   transition: background 0.2s ease;
 }
 
 .notification-item:hover {
-  background: #f3f4f6;
+  background: #e5e7eb;
 }
 
 .notification-icon {
-  font-size: 20px;
-  color: #6b7280;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  z-index: 0;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(27%) sepia(8%) saturate(1567%) hue-rotate(169deg) brightness(94%) contrast(87%);
 }
 
 .notification-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1px 4px 2px;
+  gap: 4px;
   position: absolute;
+  width: 13px;
+  height: 12px;
+  left: 19px;
   top: 4px;
-  right: 4px;
-  background: #ef4444;
-  color: white;
-  font-size: 10px;
+  background: #EA3030;
+  border-radius: 2px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 1;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
   font-weight: 600;
-  padding: 2px 6px;
-  border-radius: 10px;
-  min-width: 16px;
-  text-align: center;
+  font-size: 8px;
+  line-height: 110%;
+  color: #FFFFFF;
+  justify-content: center;
+}
+
+/* Specific styling for the second notification item (notifications) */
+.notification-item:nth-child(2) {
+  order: 1;
+}
+
+.notification-item:nth-child(2) .notification-badge {
+  width: 14px;
 }
 
 .user-section {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 12px;
+  padding: 0px;
+  gap: 8px;
+  width: 147px;
+  height: 36px;
+  flex: none;
+  order: 3;
+  flex-grow: 0;
   cursor: pointer;
-  padding: 8px;
-  border-radius: 8px;
   transition: background 0.2s ease;
 }
 
 .user-section:hover {
   background: #f3f4f6;
+  border-radius: 8px;
 }
 
-.user-avatar {
+.user-section .user-avatar-container {
   width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  height: 36px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  position: relative;
+}
+
+.user-section .user-avatar {
+  position: absolute;
+  width: 40px;
+  height: 36px;
+  left: 0px;
+  top: 0px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
-.user-avatar img {
+.user-section .user-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.avatar-placeholder {
+.user-section .user-status-indicator {
+  position: absolute;
+  left: 77.5%;
+  right: -5%;
+  top: 77.78%;
+  bottom: -8.33%;
+  background: #23A149;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+}
+
+.user-section .user-info-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+  width: 99px;
+  height: 35px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.user-section .user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  width: 99px;
+  height: 35px;
+  border-radius: 8px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.user-section .avatar-placeholder {
   width: 100%;
   height: 100%;
   background: #3b82f6;
@@ -145,18 +289,27 @@
   font-size: 16px;
 }
 
-.user-info {
-  text-align: left;
-}
-
-.user-name {
+.user-section .user-name {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 700;
   font-size: 14px;
-  font-weight: 500;
-  color: #1f2937;
+  line-height: 1.2;
+  color: #2A2A2A;
   margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.user-role {
+.user-section .user-role {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
   font-size: 12px;
-  color: #6b7280;
+  line-height: 1.2;
+  color: #727272;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
