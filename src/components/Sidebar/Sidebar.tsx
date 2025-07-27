@@ -4,6 +4,9 @@ import agarliLogo from '../../assets/agarli-logo.png';
 import okkankyLogo from '../../assets/okkanky-logo.png';
 import toggleIcon from '../../assets/toggle-icon.png';
 import arrowIcon from '../../assets/arrow-up-simple.png';
+import settingsIcon from '../../assets/settings.png';
+import helpIcon from '../../assets/help.png';
+import moonIcon from '../../assets/moon.png';
 import './Sidebar.css';
 
 interface SidebarProps {
@@ -16,7 +19,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationClick, onToggle }) => {
     // State to track whether the sidebar is collapsed or expanded
     const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
-    
+
     // State to track which navigation items are expanded
     const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(() => {
         const initial: Record<string, boolean> = {};
@@ -65,13 +68,13 @@ const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationCl
     // Helper function to render icon (emoji or image)
     const renderIcon = (icon: string, iconType?: 'emoji' | 'image') => {
         console.log('Rendering icon:', icon, 'Type:', iconType); // Debug log
-        
+
         // Check if it's explicitly marked as an image or if it looks like an image path
         if (iconType === 'image' || icon.includes('.png') || icon.includes('.jpg') || icon.includes('.svg') || icon.includes('.jpeg') || icon.startsWith('/') || icon.includes('static/')) {
             return (
-                <img 
-                    src={icon} 
-                    alt="Navigation icon" 
+                <img
+                    src={icon}
+                    alt="Navigation icon"
                     className="nav-icon-image"
                     draggable={false}
                     onError={(e) => {
@@ -90,7 +93,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationCl
 
     const renderNavigationItem = (item: NavigationItem) => {
         const isExpanded = expandedItems[item.id] ?? item.isExpanded ?? true;
-        
+
         return (
             <div key={item.id} className="nav-item-container">
                 <div
@@ -100,7 +103,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationCl
                 >
                     {item.icon && <span className="nav-icon">{renderIcon(item.icon, item.iconType)}</span>}
                     {!isCollapsed && <span className="nav-label">{item.label}</span>}
-                    
+
                     {/* Expand/Collapse Arrow for items with children */}
                     {item.hasExpandIcon && item.children && !isCollapsed && (
                         <button
@@ -109,16 +112,16 @@ const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationCl
                             aria-label={isExpanded ? 'Collapse' : 'Expand'}
                             type="button"
                         >
-                            <img 
-                                src={arrowIcon} 
-                                alt="Expand/Collapse" 
+                            <img
+                                src={arrowIcon}
+                                alt="Expand/Collapse"
                                 className="nav-expand-icon"
                                 draggable={false}
                             />
                         </button>
                     )}
                 </div>
-                
+
                 {/* Children items - only show if expanded */}
                 {item.children && isExpanded && (
                     <div className="nav-children">
@@ -200,15 +203,15 @@ const Sidebar: React.FC<SidebarProps> = ({ user, navigationItems, onNavigationCl
                 <div className="nav-section">
                     {!isCollapsed && <div className="nav-section-title">TOOLS</div>}
                     <div className="nav-item" title={isCollapsed ? "Account & Settings" : undefined}>
-                        <span className="nav-icon">⚙️</span>
+                        <span className="nav-icon">{renderIcon(settingsIcon, 'image')}</span>
                         {!isCollapsed && <span className="nav-label">Account & Settings</span>}
                     </div>
                     <div className="nav-item" title={isCollapsed ? "Help" : undefined}>
-                        <span className="nav-icon">❓</span>
+                        <span className="nav-icon">{renderIcon(helpIcon, 'image')}</span>
                         {!isCollapsed && <span className="nav-label">Help</span>}
                     </div>
                     <div className="nav-item" title={isCollapsed ? "Dark Mode" : undefined}>
-                        <span className="nav-icon">🌙</span>
+                        <span className="nav-icon">{renderIcon(moonIcon, 'image')}</span>
                         {!isCollapsed && <span className="nav-label">Dark Mode</span>}
                         {!isCollapsed && (
                             <div className="toggle-switch">

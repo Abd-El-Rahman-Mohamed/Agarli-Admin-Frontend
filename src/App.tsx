@@ -5,6 +5,9 @@ import Dashboard from './components/Dashboard/Dashboard';
 import { User, NavigationItem, KPICard, SalesTarget, ChartDataPoint, Product, ProvinceData } from './types';
 import storeIcon from './assets/store.png';
 import arrowIcon from './assets/arrow-up-simple.png';
+import noteIcon from './assets/note-01.png';
+import userGroupIcon from './assets/user-group.png';
+import lineChartIcon from './assets/line-chart.png';
 import './App.css';
 
 // Fallback SVG home icon as data URL
@@ -43,9 +46,9 @@ const App: React.FC = () => {
         { id: 'bag', label: 'Bag' }
       ]
     },
-    { id: 'transaction', label: 'Transaction (441)', icon: '💳' },
-    { id: 'customers', label: 'Customers', icon: '👥' },
-    { id: 'sales-report', label: 'Sales Report', icon: '📈' }
+    { id: 'transaction', label: 'Transaction (441)', icon: noteIcon, iconType: 'image' },
+    { id: 'customers', label: 'Customers', icon: userGroupIcon, iconType: 'image' },
+    { id: 'sales-report', label: 'Sales Report', icon: lineChartIcon, iconType: 'image' }
   ];
 
   const kpiCards: KPICard[] = [
