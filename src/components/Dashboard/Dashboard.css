@@ -48,9 +48,19 @@
 }
 
 .kpi-cards-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 0px;
+  gap: 16px;
+  width: 516px;
+  height: 318px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 /* Middle Row Layout */
@@ -85,6 +95,22 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* First KPI Card - Total Revenue */
+.kpi-card:nth-child(1) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 30px;
+  width: 250px;
+  height: 151px;
+  background: linear-gradient(90deg, #94B9FF 0%, #CEFDD9 100%);
+  border: 1px solid #E7E7E7;
+  border-radius: 20px;
+}
+
 .kpi-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -117,12 +143,47 @@
   margin-bottom: 16px;
 }
 
+/* First KPI Card Header */
+.kpi-card:nth-child(1) .kpi-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 82px;
+  margin: 0 auto;
+  width: 218px;
+  height: 24px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin-bottom: 0;
+}
+
 .kpi-title {
   font-size: 14px;
   font-weight: 500;
   color: inherit;
   opacity: 0.9;
   margin: 0;
+}
+
+/* First KPI Card Title */
+.kpi-card:nth-child(1) .kpi-title {
+  margin: 0 auto;
+  width: 107px;
+  height: 21px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 130%;
+  color: #FFFFFF;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  opacity: 1;
 }
 
 .kpi-trend {
@@ -157,6 +218,23 @@
   margin-bottom: 8px;
 }
 
+/* First KPI Card Value */
+.kpi-card:nth-child(1) .kpi-value {
+  margin: 0 auto;
+  width: 125px;
+  height: 39px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 130%;
+  color: #FFFFFF;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin-bottom: 0;
+}
+
 .kpi-change {
   display: flex;
   align-items: center;
@@ -164,8 +242,68 @@
   font-size: 14px;
 }
 
+/* First KPI Card Bottom Section */
+.kpi-card:nth-child(1) .kpi-change {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 6px;
+  margin: 0 auto;
+  width: 218px;
+  height: 39px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* First KPI Card Change Stats Container */
+.kpi-card:nth-child(1) .kpi-change .change-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0px;
+  margin: 0 auto;
+  width: 85px;
+  height: 37px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* First KPI Card Change Percentage Row */
+.kpi-card:nth-child(1) .kpi-change .change-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 2px;
+  width: 60px;
+  height: 20px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
 .change-percentage {
   font-weight: 600;
+}
+
+/* First KPI Card Change Percentage */
+.kpi-card:nth-child(1) .change-percentage {
+  width: 38px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 140%;
+  color: #09DE13;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .change-positive {
@@ -187,6 +325,534 @@
   opacity: 0.7;
   font-size: 12px;
 }
+
+/* First KPI Card Change Period */
+.kpi-card:nth-child(1) .change-period {
+  width: 85px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  color: #F6F6F6;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  opacity: 1;
+}
+
+/* First KPI Card Trend Icons */
+.kpi-card:nth-child(1) .trend-icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  opacity: 1;
+}
+
+/* First KPI Card Arrow Up Right Icon */
+.kpi-card:nth-child(1) .arrow-up-right {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) saturate(100%) invert(100%);
+}
+
+/* First KPI Card Statistic Up Icon */
+.kpi-card:nth-child(1) .statistic-up {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) saturate(100%) invert(47%) sepia(96%) saturate(4456%) hue-rotate(100deg) brightness(98%) contrast(101%);
+}
+
+/* Second KPI Card - Total Customer */
+.kpi-card:nth-child(2) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 30px;
+  width: 250px;
+  height: 151px;
+  background: #FFFFFF;
+  border: 1px solid #E7E7E7;
+  border-radius: 20px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Second KPI Card Header */
+.kpi-card:nth-child(2) .kpi-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 82px;
+  margin: 0 auto;
+  width: 210px;
+  height: 24px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin-bottom: 0;
+}
+
+/* Second KPI Card Title */
+.kpi-card:nth-child(2) .kpi-title {
+  margin: 0 auto;
+  width: 118px;
+  height: 21px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 130%;
+  color: #454545;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  opacity: 1;
+}
+
+/* Second KPI Card Arrow Icon */
+.kpi-card:nth-child(2) .arrow-up-right {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) saturate(100%) invert(27%) sepia(8%) saturate(1058%) hue-rotate(169deg) brightness(94%) contrast(87%);
+}
+
+/* Second KPI Card Bottom Section */
+.kpi-card:nth-child(2) .kpi-change {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 6px;
+  margin: 0 auto;
+  width: 210px;
+  height: 39px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Second KPI Card Value with Gradient */
+.kpi-card:nth-child(2) .kpi-value {
+  margin: 0 auto;
+  width: 94px;
+  height: 39px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 130%;
+  background: linear-gradient(90deg, #94B9FF 0%, #CEFDD9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin-bottom: 0;
+}
+
+/* Second KPI Card Change Stats Container */
+.kpi-card:nth-child(2) .change-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0px;
+  margin: 0 auto;
+  width: 85px;
+  height: 37px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Second KPI Card Change Row */
+.kpi-card:nth-child(2) .change-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 2px;
+  width: 52px;
+  height: 20px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* Second KPI Card Statistic Up Icon */
+.kpi-card:nth-child(2) .statistic-up {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(89%) saturate(1651%) hue-rotate(100deg) brightness(96%) contrast(101%);
+}
+
+/* Second KPI Card Change Percentage */
+.kpi-card:nth-child(2) .change-percentage {
+  width: 30px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 140%;
+  color: #04910C;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Second KPI Card Change Period */
+.kpi-card:nth-child(2) .change-period {
+  width: 85px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  color: #737373;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  opacity: 1;
+}
+
+/* Third KPI Card - Total Transactions */
+.kpi-card:nth-child(3) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 30px;
+  width: 250px;
+  height: 151px;
+  background: #FFFFFF;
+  border: 1px solid #E7E7E7;
+  border-radius: 20px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+/* Third KPI Card Header */
+.kpi-card:nth-child(3) .kpi-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+  width: 100%;
+  height: 24px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin-bottom: 0;
+}
+
+/* Third KPI Card Title */
+.kpi-card:nth-child(3) .kpi-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 130%;
+  color: #454545;
+  flex: 1;
+  opacity: 1;
+  margin: 0;
+}
+
+/* Third KPI Card Arrow Icon */
+.kpi-card:nth-child(3) .arrow-up-right {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) saturate(100%) invert(27%) sepia(8%) saturate(1058%) hue-rotate(169deg) brightness(94%) contrast(87%);
+  flex-shrink: 0;
+}
+
+/* Third KPI Card Bottom Section */
+.kpi-card:nth-child(3) .kpi-change {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 6px;
+  margin: 0 auto;
+  width: 210px;
+  height: 39px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Third KPI Card Value with Gradient */
+.kpi-card:nth-child(3) .kpi-value {
+  margin: 0 auto;
+  width: 105px;
+  height: 39px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 130%;
+  background: linear-gradient(90deg, #94B9FF 0%, #CEFDD9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin-bottom: 0;
+}
+
+/* Third KPI Card Change Stats Container */
+.kpi-card:nth-child(3) .change-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0px;
+  margin: 0 auto;
+  width: 85px;
+  height: 37px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Third KPI Card Change Row */
+.kpi-card:nth-child(3) .change-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 2px;
+  width: 54px;
+  height: 20px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* Third KPI Card Statistic Up Icon */
+.kpi-card:nth-child(3) .statistic-up {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(89%) saturate(1651%) hue-rotate(100deg) brightness(96%) contrast(101%);
+}
+
+/* Third KPI Card Change Percentage */
+.kpi-card:nth-child(3) .change-percentage {
+  width: 32px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 140%;
+  color: #04910C;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Third KPI Card Change Period */
+.kpi-card:nth-child(3) .change-period {
+  width: 85px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  color: #737373;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  opacity: 1;
+}
+
+/* Fourth KPI Card - Total Product */
+.kpi-card:nth-child(4) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 30px;
+  width: 250px;
+  height: 151px;
+  background: #FFFFFF;
+  border: 1px solid #E7E7E7;
+  border-radius: 20px;
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+}
+
+/* Fourth KPI Card Header */
+.kpi-card:nth-child(4) .kpi-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 82px;
+  margin: 0 auto;
+  width: 210px;
+  height: 24px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin-bottom: 0;
+}
+
+/* Fourth KPI Card Title */
+.kpi-card:nth-child(4) .kpi-title {
+  width: 103px;
+  height: 21px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 130%;
+  color: #454545;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  opacity: 1;
+}
+
+/* Fourth KPI Card Arrow Icon */
+.kpi-card:nth-child(4) .arrow-up-right {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) saturate(100%) invert(27%) sepia(8%) saturate(1058%) hue-rotate(169deg) brightness(94%) contrast(87%);
+}
+
+/* Fourth KPI Card Bottom Section */
+.kpi-card:nth-child(4) .kpi-change {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 6px;
+  margin: 0 auto;
+  width: 210px;
+  height: 39px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Fourth KPI Card Value with Gradient */
+.kpi-card:nth-child(4) .kpi-value {
+  margin: 0 auto;
+  width: 94px;
+  height: 39px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 130%;
+  background: linear-gradient(90deg, #94B9FF 0%, #CEFDD9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin-bottom: 0;
+}
+
+/* Fourth KPI Card Change Stats Container */
+.kpi-card:nth-child(4) .change-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0px;
+  margin: 0 auto;
+  width: 85px;
+  height: 37px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Fourth KPI Card Change Row */
+.kpi-card:nth-child(4) .change-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 2px;
+  width: 52px;
+  height: 20px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* Fourth KPI Card Statistic Down Icon */
+.kpi-card:nth-child(4) .statistic-down {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) saturate(100%) invert(8%) sepia(96%) saturate(6592%) hue-rotate(357deg) brightness(99%) contrast(114%);
+}
+
+/* Fourth KPI Card Change Percentage */
+.kpi-card:nth-child(4) .change-percentage {
+  width: 30px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 140%;
+  color: #FF0000;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Fourth KPI Card Change Period */
+.kpi-card:nth-child(4) .change-period {
+  width: 85px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  color: #737373;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  opacity: 1;
+}
+
+
 
 /* Sales Target Card */
 .sales-target-card {
