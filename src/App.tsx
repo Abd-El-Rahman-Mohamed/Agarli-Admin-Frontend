@@ -63,7 +63,7 @@ const App: React.FC = () => {
       id: '2',
       title: 'Total Customer',
       value: '5,000',
-      change: { percentage: 1.5, period: 'From last week', isPositive: true },
+      change: { percentage: 1.5 , period: 'From last week', isPositive: true },
       color: 'green'
     },
     {

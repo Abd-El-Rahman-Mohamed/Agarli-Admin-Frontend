@@ -1,3 +1,14 @@
+/* Global Overflow Prevention */
+* {
+  box-sizing: border-box;
+}
+
+.dashboard *, 
+.dashboard *::before, 
+.dashboard *::after {
+  max-width: 100%;
+}
+
 /* Dashboard Main Styles */
 .dashboard {
   margin-left: 280px;
@@ -6,11 +17,16 @@
   background: #f9fafb;
   min-height: calc(100vh - 80px);
   transition: margin-left 0.3s ease;
+  max-width: calc(100vw - 280px);
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Adjust dashboard margin when sidebar is collapsed */
 .dashboard.dashboard-sidebar-collapsed {
   margin-left: 80px;
+  max-width: calc(100vw - 80px);
 }
 
 .dashboard-header {
@@ -33,50 +49,55 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Top Row Layout */
 .dashboard-top-row {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 32px;
   align-items: start;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .sales-target-container {
   display: flex;
+  min-width: 0;
 }
 
 .kpi-cards-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  align-content: flex-start;
-  padding: 0px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  width: 516px;
-  height: 318px;
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
+  width: 100%;
+  min-width: 0;
 }
 
 /* Middle Row Layout */
 .dashboard-middle-row {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   gap: 32px;
   align-items: start;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* Bottom Row Layout */
 .dashboard-bottom-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 32px;
   align-items: start;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* KPI Cards Grid */
@@ -104,7 +125,9 @@
   align-items: flex-start;
   padding: 16px;
   gap: 30px;
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
+  min-width: 200px;
   height: 151px;
   background: linear-gradient(90deg, #94B9FF 0%, #CEFDD9 100%);
   border: 1px solid #E7E7E7;
@@ -375,7 +398,9 @@
   align-items: flex-start;
   padding: 20px;
   gap: 30px;
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
+  min-width: 200px;
   height: 151px;
   background: #FFFFFF;
   border: 1px solid #E7E7E7;
@@ -539,7 +564,9 @@
   align-items: flex-start;
   padding: 20px;
   gap: 30px;
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
+  min-width: 200px;
   height: 151px;
   background: #FFFFFF;
   border: 1px solid #E7E7E7;
@@ -699,7 +726,9 @@
   align-items: flex-start;
   padding: 20px;
   gap: 30px;
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
+  min-width: 200px;
   height: 151px;
   background: #FFFFFF;
   border: 1px solid #E7E7E7;
@@ -862,7 +891,9 @@
   align-items: flex-start;
   padding: 20px;
   gap: 16px;
-  width: 558px;
+  width: 100%;
+  max-width: 558px;
+  min-width: 300px;
   height: 155px;
   background: #FFFFFF;
   border: 1px solid #E7E7E7;
@@ -1291,9 +1322,17 @@
 }
 
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .map-labels {
@@ -1434,7 +1473,7 @@
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .bottom-grid {
     grid-template-columns: 1fr;
   }
@@ -1445,12 +1484,47 @@
     margin-left: 0;
     padding: 16px;
   }
-  
+
   .kpi-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .sales-target-values {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* R
+esponsive Design */
+@media (max-width: 1200px) {
+  .dashboard-top-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .kpi-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    margin-left: 0;
+    width: 100vw;
+    padding: 16px;
+  }
+
+  .dashboard.dashboard-sidebar-collapsed {
+    margin-left: 0;
+    width: 100vw;
+  }
+
+  .kpi-cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-values {
     flex-direction: column;
     gap: 16px;
   }
