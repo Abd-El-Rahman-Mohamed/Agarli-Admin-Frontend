@@ -56,7 +56,24 @@ const SalesChart: React.FC<SalesChartProps> = ({ data }) => {
       </div>
 
       <div className="chart-container">
-        <svg className="chart-svg" viewBox="0 0 600 200">
+        {/* Vertical indicator line */}
+        <div className="vertical-line-container">
+          <svg width="3" height="187" viewBox="0 0 3 187" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="2" height="228" rx="0.5" fill="url(#paint0_linear_122054_8527)" stroke="url(#paint1_linear_122054_8527)"/>
+            <defs>
+              <linearGradient id="paint0_linear_122054_8527" x1="1.5" y1="0" x2="1.5" y2="229" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#3652AD" stopOpacity="0.74"/>
+                <stop offset="1" stopColor="#3BD0FF" stopOpacity="0.35"/>
+              </linearGradient>
+              <linearGradient id="paint1_linear_122054_8527" x1="1.5" y1="0" x2="1.5" y2="229" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#3652AD" stopOpacity="0.74"/>
+                <stop offset="1" stopColor="#3BD0FF" stopOpacity="0.35"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        
+        <svg className="chart-svg" viewBox="0 0 540 200">
           <defs>
             <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#94B9FF" />
