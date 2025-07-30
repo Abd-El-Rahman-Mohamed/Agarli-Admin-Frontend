@@ -1496,7 +1496,7 @@
   font-family: 'Plus Jakarta Sans';
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 150%;
   text-align: center;
   background: linear-gradient(90deg, #94B9FF 0%, #CEFDD9 100%);
@@ -1524,11 +1524,206 @@
 
 /* Customer Growth Map */
 .customer-growth-card {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 28px;
+  width: 368px;
+  height: 396px;
+  background: #FFFFFF;
+  border: 1px solid #E7E7E7;
+  border-radius: 24px;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+
+.growth-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+  width: 328px;
+  height: 79px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.growth-title-combined {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 4px;
+  width: 328px;
+  height: 42px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.title-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 0px;
+  width: 142px;
+  height: 42px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.title-section h3 {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 130%;
+  color: #454545;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0;
+  height: 21px;
+}
+
+.title-section span {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 130%;
+  color: #454545;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0;
+  height: 21px;
+}
+
+.show-all-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 4px;
+  width: 78px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.show-all-btn span {
+  width: 50px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 140%;
+  color: #3D3D3D;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.show-all-btn::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 17L17 7M17 7H7M17 7V17' stroke='%23020617' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.growth-legend {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 12px;
+  width: 328px;
+  height: 17px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.legend-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 4px;
+  height: 17px;
+  flex: none;
+  flex-grow: 0;
+}
+
+.legend-item:nth-child(1) {
+  width: 109px;
+  order: 0;
+}
+
+.legend-item:nth-child(2) {
+  width: 121px;
+  order: 1;
+}
+
+.legend-item:nth-child(3) {
+  width: 77px;
+  order: 2;
+}
+
+.legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 100px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.legend-text {
+  height: 17px;
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  color: #737373;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.map-container {
+  width: 328px;
+  height: 249px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  position: relative;
+  background: #f3f4f6;
+  border-radius: 16px;
 }
 
 .growth-header {
@@ -1538,17 +1733,54 @@
   margin-bottom: 8px;
 }
 
-.growth-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1e293b;
+.growth-title-combined {
+  /* COmpany - Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 2px;
+  width: 83px;
+  height: 40px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.growth-title-combined h3 {
+  /* Kanky Store - Main title */
+  width: 83px;
+  height: 21px;
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #454545;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
   margin: 0;
 }
 
-.growth-subtitle {
-  font-size: 14px;
-  color: #64748b;
-  margin-bottom: 20px;
+.growth-title-combined span {
+  /* Company - Subtitle */
+  width: 57px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
+  color: #B0B0B0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0;
 }
 
 .growth-legend {
@@ -1896,4 +2128,249 @@ esponsive Design */
   z-index: 3;
   position: relative;
   flex: 1;
+}/* Cust
+omer Growth Map Card */
+.customer-growth-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 28px;
+  width: 368px;
+  height: 396px;
+  background: #FFFFFF;
+  border: 1px solid #E7E7E7;
+  border-radius: 24px;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+
+.growth-header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+  width: 328px;
+  height: 79px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.growth-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 4px;
+  width: 328px;
+  height: 42px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.growth-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 4px;
+  width: 142px;
+  height: 42px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.growth-title h3 {
+  width: 142px;
+  height: 42px;
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 130%;
+  display: flex;
+  align-items: center;
+  color: #454545;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0;
+}
+
+.growth-cta {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 4px;
+  width: 78px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.growth-cta span {
+  width: 50px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 140%;
+  color: #3D3D3D;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.growth-cta svg {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.growth-legend {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 12px;
+  width: 328px;
+  height: 17px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.growth-legend .legend-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 4px;
+  height: 17px;
+  flex: none;
+  flex-grow: 0;
+}
+
+.growth-legend .legend-item:nth-child(1) {
+  width: 109px;
+  order: 0;
+}
+
+.growth-legend .legend-item:nth-child(2) {
+  width: 121px;
+  order: 1;
+}
+
+.growth-legend .legend-item:nth-child(3) {
+  width: 77px;
+  order: 2;
+}
+
+.growth-legend .legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 100px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.growth-legend .legend-item span {
+  height: 17px;
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  color: #737373;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.map-container {
+  width: 328px;
+  height: 249px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  position: relative;
+}
+
+.map-image {
+  position: absolute;
+  width: 328px;
+  height: 249px;
+  left: 0px;
+  top: 0px;
+  background-image: url('../../assets/indonesia-map.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+}
+
+.map-marker {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+}
+
+.east-java-marker {
+  left: 60px;
+  top: 206px;
+}
+
+.kalimantan-marker {
+  left: 143px;
+  top: 220px;
+}
+
+.bali-marker {
+  left: 118px;
+  top: 86px;
+}
+
+.marker-outer {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 0px;
+  top: 0px;
+  border-radius: 50%;
+}
+
+.marker-inner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+}
+
+.bali-marker .marker-inner {
+  width: 10px;
+  height: 10px;
+  left: 3px;
+  top: 3px;
 }
