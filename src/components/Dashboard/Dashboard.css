@@ -453,9 +453,11 @@
 
 /* Second KPI Card Arrow Icon */
 .kpi-card:nth-child(2) .arrow-up-right {
-  width: 24px;
-  height: 24px;
+  max-width: 30px;
+  width: 30px;
+  height: 30px;
   filter: brightness(0) saturate(100%) invert(27%) sepia(8%) saturate(1058%) hue-rotate(169deg) brightness(94%) contrast(87%);
+  padding-right: 10px;
 }
 
 /* Second KPI Card Bottom Section */
@@ -2105,8 +2107,9 @@
 }
 
 .legend-item:nth-child(2) {
-  width: 121px;
+  width: 140px;
   order: 1;
+  padding-left: 5px;
 }
 
 .legend-item:nth-child(3) {
