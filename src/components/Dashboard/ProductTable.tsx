@@ -1,6 +1,8 @@
 import React from 'react';
 import { Product } from '../../types';
 import './Dashboard.css';
+import kankyKitadakateImage from '../../assets/kanky-kitadakate.png';
+import arrowUpRightIcon from '../../assets/arrow-up-right.svg';
 
 interface ProductTableProps {
   products: Product[];
@@ -30,10 +32,13 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   };
 
   return (
-    <div className="product-table-card">
+    <div className="product-table-container">
       <div className="table-header">
         <h3 className="table-title">Product Popular</h3>
-        <button className="show-all-btn">Show All ↗</button>
+        <button className="show-all-btn">
+          <span>Show All</span>
+          <img src={arrowUpRightIcon} alt="arrow" className="arrow-icon" />
+        </button>
       </div>
 
       <div className="table-container">
@@ -47,14 +52,18 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
+            {products.map((product, index) => (
               <tr key={product.id}>
                 <td className="product-cell">
                   <div className="product-info">
-                    <img 
-                      src={product.image} 
+                    <img
+                      src={index === 0 ? kankyKitadakateImage : (product.image.startsWith('/api/placeholder') ? kankyKitadakateImage : product.image)}
                       alt={product.name}
                       className="product-image"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = kankyKitadakateImage;
+                      }}
                     />
                     <div className="product-details">
                       <div className="product-id">{product.id}</div>

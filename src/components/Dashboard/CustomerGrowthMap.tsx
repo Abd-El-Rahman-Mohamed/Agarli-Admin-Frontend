@@ -1,6 +1,7 @@
 import React from 'react';
 import { ProvinceData } from '../../types';
 import './Dashboard.css';
+import indonesiaMap from '../../assets/indonesia-map.png';
 
 interface CustomerGrowthMapProps {
   data: ProvinceData[];
@@ -39,7 +40,10 @@ const CustomerGrowthMap: React.FC<CustomerGrowthMapProps> = ({ data }) => {
       </div>
 
       <div className="map-container">
-        <div className="map-image">
+        <div 
+          className="map-image"
+          style={{ backgroundImage: `url(${indonesiaMap})` }}
+        >
           {/* Map markers positioned absolutely */}
           <div className="map-marker east-java-marker">
             <div className="marker-outer" style={{ backgroundColor: '#F3FFC8' }}>

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 /* Global Overflow Prevention */
 * {
@@ -22,7 +23,7 @@
   max-width: calc(100vw - 280px);
   width: 100%;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow: auto;
 }
 
 /* Adjust dashboard margin when sidebar is collapsed */
@@ -32,7 +33,7 @@
 }
 
 .dashboard-header {
-  margin-bottom: 32px;
+  margin-bottom: 8px;
 }
 
 .dashboard-title {
@@ -50,21 +51,21 @@
 .dashboard-content {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 22px;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 /* Top Row Layout */
 .dashboard-top-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 32px;
+  gap: 22px;
   align-items: start;
   width: 100%;
   max-width: 100%;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .sales-target-container {
@@ -84,22 +85,25 @@
 .dashboard-middle-row {
   display: grid;
   grid-template-columns: 1fr 516px;
-  gap: 32px;
+  gap: 22px;
   align-items: start;
   width: 100%;
   max-width: 100%;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 /* Bottom Row Layout */
 .dashboard-bottom-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 32px;
+  grid-template-columns: 1fr minmax(400px, 706px);
+  gap: 22px;
   align-items: start;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
+  overflow: visible;
+  flex: 1;
+  min-height: 0;
 }
 
 /* KPI Cards Grid */
@@ -125,12 +129,12 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 16px;
-  gap: 30px;
+  padding: 12px;
+  gap: 20px;
   width: 100%;
   max-width: 250px;
   min-width: 200px;
-  height: 151px;
+  height: 120px;
   background: linear-gradient(90deg, #94B9FF 0%, #CEFDD9 100%);
   border: 1px solid #E7E7E7;
   border-radius: 20px;
@@ -398,12 +402,12 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px;
-  gap: 30px;
+  padding: 12px;
+  gap: 20px;
   width: 100%;
   max-width: 250px;
   min-width: 200px;
-  height: 151px;
+  height: 120px;
   background: #FFFFFF;
   border: 1px solid #E7E7E7;
   border-radius: 20px;
@@ -564,12 +568,12 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px;
-  gap: 30px;
+  padding: 12px;
+  gap: 20px;
   width: 100%;
   max-width: 250px;
   min-width: 200px;
-  height: 151px;
+  height: 120px;
   background: #FFFFFF;
   border: 1px solid #E7E7E7;
   border-radius: 20px;
@@ -726,12 +730,12 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px;
-  gap: 30px;
+  padding: 12px;
+  gap: 20px;
   width: 100%;
   max-width: 250px;
   min-width: 200px;
-  height: 151px;
+  height: 120px;
   background: #FFFFFF;
   border: 1px solid #E7E7E7;
   border-radius: 20px;
@@ -891,8 +895,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 20px;
-  gap: 16px;
+  padding: 16px;
+  gap: 12px;
   width: 100%;
   max-width: 558px;
   min-width: 300px;
@@ -1522,6 +1526,426 @@
   pointer-events: none;
 }
 
+/* Product Table Container - Figma Design */
+.product-table-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5px;
+  gap: 24px;
+  width: 706px;
+  height: 394px;
+  background: #FFFFFF;
+  border-radius: 24px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Product Table Card Header */
+.product-table-card .table-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 378px;
+  width: 666px;
+  height: 24px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Product Table Title */
+.product-table-card .table-title {
+  width: 126px;
+  height: 21px;
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 130%;
+  display: flex;
+  align-items: center;
+  color: #454545;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0;
+}
+
+/* Show All Button */
+.product-table-card .show-all-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 4px;
+  width: 78px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.product-table-card .show-all-btn::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 17L17 7M17 7H7M17 7V17' stroke='%23020617' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.product-table-card .show-all-btn span {
+  width: 50px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 140%;
+  color: #3D3D3D;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* Table Container */
+.product-table-card .table-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  width: 666px;
+  height: 306px;
+  border: 1px solid #E7E7E7;
+  border-radius: 16px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  overflow: hidden;
+}
+
+/* Product Table */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #FFFFFF;
+}
+
+/* Table Header */
+.product-table thead {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  width: 666px;
+  height: 46px;
+  background: #F6F6F6;
+  border: 1px solid #E7E7E7;
+  border-radius: 16px 16px 0px 0px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.product-table thead tr {
+  display: flex;
+  width: 100%;
+}
+
+/* Table Header Cells */
+.product-table th {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px;
+  gap: 4px;
+  isolation: isolate;
+  height: 46px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.product-table th:first-child {
+  width: 250px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.product-table th:nth-child(2),
+.product-table th:nth-child(3),
+.product-table th:nth-child(4) {
+  width: 138.67px;
+  flex: none;
+  align-self: stretch;
+  flex-grow: 1;
+}
+
+.product-table th:nth-child(2) {
+  order: 1;
+}
+
+.product-table th:nth-child(3) {
+  order: 2;
+}
+
+.product-table th:nth-child(4) {
+  order: 3;
+}
+
+/* Header Cell Dividers */
+.product-table th:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 0px;
+  left: 0px;
+  top: calc(50% - 0px/2 - 11px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transform: rotate(-90deg);
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  z-index: 0;
+}
+
+/* Header Text */
+.product-table th {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 140%;
+  color: #2A2A2A;
+  text-align: left;
+  border: none;
+  background: none;
+}
+
+/* Table Body */
+.product-table tbody {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Table Rows */
+.product-table tbody tr {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  width: 666px;
+  height: 65px;
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+  border-bottom: 1px solid #E7E7E7;
+}
+
+.product-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Table Data Cells */
+.product-table td {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  height: 65px;
+  box-sizing: border-box;
+}
+
+/* Product Cell */
+.product-table .product-cell {
+  width: 250px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.product-table .product-info {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.product-table .product-image {
+  width: 41px;
+  height: 41px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.product-table .product-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 4px;
+  width: 174px;
+  height: 41px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.product-table .product-id {
+  width: 40px;
+  height: 17px;
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  color: #454545;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.product-table .product-name {
+  width: 174px;
+  height: 20px;
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: #454545;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Price, Sales, Status Cells */
+.product-table .price-cell,
+.product-table .sales-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 12px;
+  gap: 8px;
+  width: 138.67px;
+  height: 65px;
+  flex: none;
+  align-self: stretch;
+  flex-grow: 1;
+}
+
+.product-table .price-cell {
+  order: 1;
+}
+
+.product-table .sales-cell {
+  order: 2;
+}
+
+.product-table .price-cell,
+.product-table .sales-cell {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: #323130;
+  padding-left: 15px;
+}
+
+/* Status Cell */
+.product-table .status-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 12px;
+  gap: 8px;
+  width: 138.67px;
+  height: 65px;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 1;
+}
+
+/* Status Badge */
+.product-table .status-badge {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 6px 8px;
+  gap: 10px;
+  width: 65px;
+  height: 29px;
+  border-radius: 10px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.product-table .status-badge.status-success {
+  background: #B2FFB4;
+}
+
+.product-table .status-badge {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 140%;
+  color: #04910C;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Update the product table card class to use the new container */
+.product-table-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 24px;
+  width: 706px;
+  height: 394px;
+  background: #FFFFFF;
+  border: 1px solid #E7E7E7;
+  border-radius: 24px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
 /* Customer Growth Map */
 .customer-growth-card {
   box-sizing: border-box;
@@ -1617,7 +2041,8 @@
   align-items: center;
   padding: 0px;
   gap: 4px;
-  width: 78px;
+  width: auto;
+  min-width: 78px;
   height: 24px;
   background: none;
   border: none;
@@ -1628,9 +2053,10 @@
 }
 
 .show-all-btn span {
-  width: 50px;
+  width: auto;
+  min-width: 50px;
   height: 17px;
-  font-family: 'Plus Jakarta Sans';
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -1639,18 +2065,13 @@
   flex: none;
   order: 0;
   flex-grow: 0;
+  white-space: nowrap;
 }
 
-.show-all-btn::after {
-  content: '';
-  width: 24px;
-  height: 24px;
-  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 17L17 7M17 7H7M17 7V17' stroke='%23020617' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
+/* Arrow icon styling moved to consolidated definition below */
+
+.show-all-btn:hover span {
+  color: #2563eb;
 }
 
 .growth-legend {
@@ -1866,16 +2287,27 @@
 
 .table-header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 0px;
+  gap: 4px;
+  width: 100%;
+  height: 24px;
   margin-bottom: 20px;
 }
 
 .table-title {
-  font-size: 18px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
   font-weight: 600;
-  color: #1e293b;
+  font-size: 16px;
+  line-height: 130%;
+  color: #454545;
   margin: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .table-container {
@@ -2128,7 +2560,9 @@ esponsive Design */
   z-index: 3;
   position: relative;
   flex: 1;
-}/* Cust
+}
+
+/* Cust
 omer Growth Map Card */
 .customer-growth-card {
   box-sizing: border-box;
@@ -2237,6 +2671,10 @@ omer Growth Map Card */
   flex-grow: 0;
 }
 
+.growth-cta:hover span {
+  color: #2563eb;
+}
+
 .growth-cta svg {
   width: 24px;
   height: 24px;
@@ -2322,8 +2760,7 @@ omer Growth Map Card */
   height: 249px;
   left: 0px;
   top: 0px;
-  background-image: url('../../assets/indonesia-map.png');
-  background-size: cover;
+  background-size: 550px;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 16px;
@@ -2373,4 +2810,234 @@ omer Growth Map Card */
   height: 10px;
   left: 3px;
   top: 3px;
+}
+
+/* Product 
+Table Container */
+.product-table-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 24px;
+  width: 100%;
+  min-width: 400px;
+  background: #FFFFFF;
+  border-radius: 24px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 1;
+}
+
+.table-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  gap: 4px;
+  width: 100%;
+  height: 24px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin-bottom: 0px;
+}
+
+.table-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 130%;
+  color: #454545;
+  flex: 1;
+  margin: 0;
+}
+
+.table-container {
+  width: 100%;
+  flex: 1;
+  border: 1px solid #E7E7E7;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  border: none;
+}
+
+.product-table thead th {
+  padding: 16px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  color: #737373;
+  background: #F9FAFB;
+  border-bottom: 1px solid #E7E7E7;
+}
+
+/* Column 1: Product - Left aligned */
+.product-table th:nth-child(1),
+.product-table td:nth-child(1) {
+  width: 37%;
+  text-align: left !important;
+}
+
+/* Column 2: Price - Right aligned */
+.product-table th:nth-child(2),
+.product-table td:nth-child(2) {
+  width: 20%;
+  text-align: right !important;
+}
+
+/* Column 3: Sales - Right aligned */
+.product-table th:nth-child(3),
+.product-table td:nth-child(3) {
+  width: 20%;
+  text-align: right !important;
+}
+
+/* Column 4: Status - Center aligned */
+.product-table th:nth-child(4),
+.product-table td:nth-child(4) {
+  width: 20%;
+  text-align: center !important;
+}
+
+.product-table tbody tr {
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.product-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.product-table tbody tr:hover {
+  background-color: #F9FAFB;
+}
+
+.product-table tbody td {
+  padding: 16px;
+  vertical-align: middle;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #454545;
+}
+
+.product-cell {
+  padding: 16px !important;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.product-id {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 140%;
+  color: #737373;
+}
+
+.product-name {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  color: #454545;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price-cell {
+  font-weight: 600;
+  color: #454545;
+}
+
+.sales-cell {
+  font-weight: 500;
+  color: #454545;
+}
+
+.status-cell {
+  /* Alignment handled by column selector above */
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 140%;
+  text-transform: capitalize;
+  min-width: 60px;
+}
+
+.status-success {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.status-pending {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.status-failed {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+.show-all-btn .arrow-icon {
+  width: 20px !important;
+  height: 20px !important;
+  opacity: 1 !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  margin-left: 4px !important;
+  filter: invert(0.5) !important;
+}
+
+.show-all-btn:hover .arrow-icon {
+  opacity: 1;
 }

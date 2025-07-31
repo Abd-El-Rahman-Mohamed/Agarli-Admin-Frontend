@@ -63,7 +63,7 @@ const App: React.FC = () => {
       id: '2',
       title: 'Total Customer',
       value: '5,000',
-      change: { percentage: 1.5 , period: 'From last week', isPositive: true },
+      change: { percentage: 1.5, period: 'From last week', isPositive: true },
       color: 'green'
     },
     {
@@ -104,7 +104,7 @@ const App: React.FC = () => {
 
   const popularProducts: Product[] = [
     {
-      id: '02231-1',
+      id: '022311',
       name: 'Kanky Kftadakate (Green)',
       image: '/api/placeholder/40/40',
       price: 20.00,
@@ -112,7 +112,7 @@ const App: React.FC = () => {
       status: 'Success'
     },
     {
-      id: '02231-2',
+      id: '022312',
       name: 'Kanky Kftadakate (Green)',
       image: '/api/placeholder/40/40',
       price: 20.00,
@@ -120,7 +120,7 @@ const App: React.FC = () => {
       status: 'Success'
     },
     {
-      id: '02231-3',
+      id: '022313',
       name: 'Kanky Kftadakate (Green)',
       image: '/api/placeholder/40/40',
       price: 20.00,
@@ -128,7 +128,7 @@ const App: React.FC = () => {
       status: 'Success'
     },
     {
-      id: '02231-4',
+      id: '022314',
       name: 'Kanky Kftadakate (Green)',
       image: '/api/placeholder/40/40',
       price: 20.00,
